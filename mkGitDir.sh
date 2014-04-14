@@ -10,9 +10,16 @@ echo "Name your new repo:"
 read REPONAME
 echo "Describe your new repo:" 
 read REPODESCRIPTION
+echo "Commit and push contents of current directory? y/n:"
+read PUSHSTATUS
 # escape spaces
 GITHUBUSERNAME=${GITHUBUSERNAME// /\ }
 REPONAME=${REPONAME// /\ }
 REPODESCRIPTION=${REPODESCRIPTION// /\ }
+if [[ "$PUSHSTATUS" = "y" || "$PUSHSTATUS" = "Y" ]]
+	then
+	git commit -a -m "Initial commit"
+	git push
+fi
 # create github repo
 curl -u "$GITHUBUSERNAME" https://api.github.com/user/repos -d '{"name":"'"$REPONAME"'","description":"'"$REPODESCRIPTION"'"}'
