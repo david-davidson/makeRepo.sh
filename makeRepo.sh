@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# 1. Set up an alias by editing .bash_profile: e.g., mkGitDir='path/to/this/script/mkGitDir.sh'
-# 2. Then just run mkGitDir from anywhere, and name your repo after: e.g., mkGitDir test
+# USAGE:
+# 1. Set up an alias by editing ~/.bashrc or ~/.bash_profile: 
+# 	 e.g., makeRepo='absolute/path/to/this/script/makeRepo.sh'
+# 2. Then just run 'makeRepo' to create new repositiories without navigating to GitHub.com!
 
 # get required information
 echo "What's your GitHub username?"
