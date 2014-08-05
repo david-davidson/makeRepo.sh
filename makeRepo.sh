@@ -20,14 +20,15 @@ REPODESCRIPTION=${REPODESCRIPTION// /\ } # Escape spaces in description
 # Create the remote repo!
 REPOURL=https://github.com/$GITHUBUSERNAME/$REPONAME # Predict URL
 curl -u "$GITHUBUSERNAME" https://api.github.com/user/repos -d '{"name":"'"$REPONAME"'","description":"'"$REPODESCRIPTION"'"}'
-echo ">>>>>>> Created and added remote repo at $REPOURL"
+git init
+git remote add origin $REPOURL
+echo ">>>>> Created and added remote repo at $REPOURL"
 
 # Optional: add, commit, and push the current directory's contents
 if [[ "$PUSHSTATUS" = "y" || "$PUSHSTATUS" = "Y" ]]
 	then
-	git init
 	git add ./*
 	git commit -a -m "Initial commit"
-	git remote add origin $REPOURL
+	echo ">>>>> Pushing repo now"
 	git push -u origin master
 fi
